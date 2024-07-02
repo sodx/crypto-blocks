@@ -29,7 +29,7 @@ class SetCreds
         if ( ! $creds_file_data ) {
             \WP_CLI::error( 'File is empty.' );
         }
-        
+
         // Doing this only for demo purposes. Api keys would be removed after review.
         $creds_file_data = str_replace( '%', '', $creds_file_data );
         $creds = explode( '|', $creds_file_data );

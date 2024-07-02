@@ -6,6 +6,7 @@ all:
 
 start:
 	composer install
+	source ~/.nvm/nvm.sh && nvm install
 	yarn install
 	docker compose up --build -d
 
@@ -17,4 +18,5 @@ down:
 
 ssh:
 	docker compose exec -it wordpress bash
+
 
