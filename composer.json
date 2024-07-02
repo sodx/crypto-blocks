@@ -1,0 +1,56 @@
+{
+  "name": "sodx/crypto-blocks",
+  "type": "wordpress-plugin",
+  "description": "Plugin for generating a chart of cryptocurrency prices, in a Gutenberg block.",
+  "keywords": [
+    "WordPress",
+    "Plugins"
+  ],
+  "homepage": "https://github.com/sodx/crypto-blocks",
+  "authors": [
+    {
+      "name": "Contributors",
+      "homepage": "https://github.com/sodx"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CB\\": "inc/"
+    }
+  },
+  "require": {
+    "php": ">=8.0.2",
+    "htmlburger/carbon-fields": "^3.3",
+    "ext-dom": "*",
+    "symfony/http-client": "^7.0",
+    "nyholm/psr7": "^1.8",
+    "openai-php/client": "^0.8.5"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+    "wp-coding-standards/wpcs": "2.3.0"
+  },
+  "scripts": {
+    "check:cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "fix:cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+    "pre-push": ".husky/pre-push"
+  },
+  "support": {
+    "issues": "https://github.com/sodx/crypto-blocks/issues",
+    "source": "https://github.com/sodx/crypto-blocks"
+  },
+  "version": "0.0.1",
+  "source": {
+    "type": "git",
+    "url": "git@github.com:sodx/crypto-blocks.git",
+    "reference": "0.0.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "php-http/discovery": true
+    }
+  }
+}
