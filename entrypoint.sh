@@ -21,11 +21,17 @@ if ! wp core is-installed --allow-root --path=$WP_PATH; then
     echo "===== WordPress installation completed. ====="
 fi
 
-
+echo "===== Activation of plugin 'crypto-blocks' ====="
 wp plugin activate crypto-blocks --allow-root --path=$WP_PATH
-echo "===== Plugin 'crypto-blocks' activated. ====="
 
+echo "===== Setting Creds. ====="
+wp cb set-creds --force --allow-root --path=$WP_PATH
 
+echo "===== Parsing news. ====="
+wp cb parse-news --allow-root --path=$WP_PATH
+
+echo "===== Creating Homepage. ====="
+wp cb create-homepage --allow-root --path=$WP_PATH
 
 echo "===== Starting Apache... ====="
 apache2-foreground
