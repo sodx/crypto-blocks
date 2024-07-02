@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./crypto:/var/www/html/wp-content/plugins/crypto-blocks
+      - ./:/var/www/html/wp-content/plugins/crypto-blocks
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -14,7 +14,7 @@ services:
       WORDPRESS_DB_NAME: exampledb
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.5.8
     volumes:
       - db_data:/var/lib/mysql
     restart: always

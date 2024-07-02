@@ -5,12 +5,6 @@ RUN apt-get update && \
     git \
     unzip
 
-RUN mkdir -p /var/www/html/wp-content/plugins/crypto-blocks
-
-COPY . /var/www/html/wp-content/plugins/crypto-blocks
-
-RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/crypto-blocks
-
 EXPOSE 80
 
 CMD ["apache2-foreground"]

@@ -10,5 +10,5 @@ down:
 	docker compose down
 
 ssh:
-	docker compose exec -it crypto-blocks bash
+	docker compose exec -it wordpress bash
 
