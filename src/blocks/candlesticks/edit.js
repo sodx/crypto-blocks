@@ -14,11 +14,8 @@ const Edit = ( { attributes, setAttributes } ) => {
                         label="Source"
                         value={ source }
                         options={ [
-                            { label: 'OKX', value: 'okx' },
-                            { label: 'MEXC', value: 'mexc' },
                             { label: 'Kraken', value: 'kraken' },
                             { label: 'Bybit', value: 'bybit' },
-                            { label: 'Kucoin', value: 'kucoin' },
                         ] }
                         onChange={ ( value ) =>
                             setAttributes( { source: value } )
@@ -31,8 +28,6 @@ const Edit = ( { attributes, setAttributes } ) => {
                             { label: 'BTC/USDT', value: 'BTC/USDT' },
                             { label: 'SOL/USDT', value: 'SOL/USDT' },
                             { label: 'ETH/USDT', value: 'ETH/USDT' },
-                            { label: 'TON/USDT', value: 'TON/USDT' },
-                            { label: 'PEPE/USDT', value: 'PEPE/USDT' },
                         ] }
                         onChange={ ( value ) =>
                             setAttributes( { pair: value } )

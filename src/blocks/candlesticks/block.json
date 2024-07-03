@@ -15,11 +15,8 @@
       "type": "string",
       "default": "okx",
       "enum": [
-        "okx",
-        "mexc",
         "kraken",
-        "bybit",
-        "kucoin"
+        "bybit"
       ]
     },
     "pair": {
@@ -28,9 +25,7 @@
       "enum": [
         "BTC/USDT",
         "SOL/USDT",
-        "ETH/USDT",
-        "TON/USDT",
-        "PEPE/USDT"
+        "ETH/USDT"
       ]
     },
     "interval": {
