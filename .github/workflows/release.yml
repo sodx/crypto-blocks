@@ -1,9 +1,8 @@
 name: Build and Release
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -55,7 +54,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: graphql-api
+          name: crypto-blocks
           path: package_build/crypto-blocks.zip
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
