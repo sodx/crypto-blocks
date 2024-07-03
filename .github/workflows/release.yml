@@ -49,26 +49,24 @@ jobs:
 
       - name: Create release package
         run: |
-          mkdir build
-          rsync -av --exclude='build' --exclude='vendor' --exclude='.git' --exclude='node_modules' --exclude='.husky' --exclude='src' --exclude='.env' --exclude='.eslintrc.js' --exclude='.gitignore' --exclude='.nvmrc' --exclude='.phpcs-cache' --exclude='.prettierrc.js' --exclude='docker-compose.yml' --exclude='Dockerfile' --exclude='entrypoint.sh' --exclude='Makefile' --exclude='phpcs.xml.dist' --exclude='prepare.js' --exclude='README.md' --exclude='webpack.config.js' . build/
-          cd build
-          zip -r ../crypto-blocks.zip .
-          cd ..
-          mkdir final_build
-          mv crypto-blocks.zip final_build/
-          cd final_build
-          unzip crypto-blocks.zip
-          rm crypto-blocks.zip
-          rsync -av ../build/vendor vendor/
-          rsync -av ../build/build build/
-          zip -r crypto-blocks.zip .
+            # Ensure final_build directory does not already exist
+            if [ -d "final_build" ]; then rm -rf final_build; fi
+            
+            mkdir final_build
+            rsync -av --exclude='build' --exclude='vendor' --exclude='.git' --exclude='node_modules' --exclude='.husky' --exclude='src' --exclude='.env' --exclude='.eslintrc.js' --exclude='.gitignore' --exclude='.nvmrc' --exclude='.phpcs-cache' --exclude='.prettierrc.js' --exclude='docker-compose.yml' --exclude='Dockerfile' --exclude='entrypoint.sh' --exclude='Makefile' --exclude='phpcs.xml.dist' --exclude='prepare.js' --exclude='README.md' --exclude='webpack.config.js' . final_build/
+            
+            # Include the build and vendor directories in the release package
+            rsync -av build/ final_build/build/
+            rsync -av vendor/ final_build/vendor/
+            
+            cd final_build
+            zip -r ../crypto-blocks.zip .
 
       - name: Upload release asset
         uses: actions/upload-artifact@v2
         with:
           name: crypto-blocks.zip
-          path: final_build/crypto-blocks.zip
-
+          path: crypto-blocks.zip
   release:
     runs-on: ubuntu-latest
     needs: build
@@ -90,4 +88,4 @@ jobs:
             Automated release from GitHub Actions.
           draft: false
           prerelease: false
-          files: final_build/crypto-blocks.zip
+          files: crypto-blocks.zip
