@@ -46,21 +46,12 @@ jobs:
 
       - name: Create release package
         run: |
-            # Ensure final_build directory does not already exist
-            if [ -d "final_build" ]; then rm -rf final_build; fi
-            
-            mkdir final_build
-            rsync -av --exclude='build' --exclude='vendor' --exclude='.git' --exclude='node_modules' --exclude='.husky' --exclude='src' --exclude='.env' --exclude='.eslintrc.js' --exclude='.gitignore' --exclude='.nvmrc' --exclude='.phpcs-cache' --exclude='.prettierrc.js' --exclude='docker-compose.yml' --exclude='Dockerfile' --exclude='entrypoint.sh' --exclude='Makefile' --exclude='phpcs.xml.dist' --exclude='prepare.js' --exclude='README.md' --exclude='webpack.config.js' . final_build/
-            
-            # Ensure build and vendor directories exist and copy them
-            if [ -d "build" ]; then rsync -av build/ final_build/build/; fi
-            if [ -d "vendor" ]; then rsync -av vendor/ final_build/vendor/; fi
-            
-            # Remove excluded files from the final build directory
-            rm -rf final_build/docker-compose.yml final_build/Dockerfile final_build/entrypoint.sh final_build/Makefile final_build/phpcs.xml.dist final_build/prepare.js final_build/README.md final_build/webpack.config.js final_build/.git final_build/.husky final_build/src final_build/.env final_build/.eslintrc.js final_build/.gitignore final_build/.nvmrc final_build/.phpcs-cache final_build/.prettierrc.js
-            
-            cd final_build
-            zip -r ../crypto-blocks.zip .
+          zip -r crypto-blocks.zip . \
+            -x ".git/*" ".github/*" "node_modules/*" \
+            ".husky/*" "src/*" ".env" ".eslintrc.js" ".gitignore" ".nvmrc" \
+            ".phpcs-cache" ".prettierrc.js" "docker-compose.yml" "Dockerfile" \
+            "entrypoint.sh" "Makefile" "phpcs.xml.dist" "prepare.js" "README.md" \
+            "webpack.config.js" "yarn.lock" "composer.json" "composer.lock" \
 
       - name: Upload release asset
         uses: actions/upload-artifact@v2
