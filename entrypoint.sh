@@ -35,6 +35,7 @@ wp cb create-homepage --allow-root --path=$WP_PATH
 
 echo "===== Flushing Permalinks ====="
 wp rewrite flush --allow-root --path=$WP_PATH
+wp rewrite structure '/%postname%' --allow-root --path=$WP_PATH
 
 echo "===== Starting Apache... ====="
 apache2-foreground

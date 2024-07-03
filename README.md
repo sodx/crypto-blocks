@@ -7,7 +7,9 @@ Follow these steps to get your demo environment up and running.
 ### Prerequisites
 
 Ensure the following tools are installed on your system:
-
+- [Composer](https://getcomposer.org/)
+- [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
+- [Yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 - [Make]() (This is typically pre-installed on Unix-based systems, but you may need to install it manually on Windows or some Linux distributions)
 
@@ -37,6 +39,11 @@ If you start the plugin using the `make start` command, the following steps will
     ```sh
     make start
     ```
+   The `make start` command will perform the following actions:
+
+   - Install PHP dependencies using Composer.
+   - Load NVM, install the required Node version, and install JavaScript dependencies using Yarn.
+   - Build and start the Docker container.
 
 3. **Access the site**:
 
@@ -86,3 +93,10 @@ News items are automatically populated from `TheNewsAPI`. Then the content of th
 5. Add the `News Feed` block.
 6. Specify the number of news items to display.
 7. Save the page and preview it to see the news.
+
+## Known Issues
+In some cases, after the very first project launch, posts may not appear in the News Feed block and WordPress endpoints may return 404 errors. Although we run `wp rewrite flush` on background during initialization, you may need to update the permalinks settings manually:
+
+1. Go to Settings > Permalinks in the WordPress admin.
+2. Click Save Changes without making any changes.
+3. This will refresh the rewrite rules and should resolve the issue.

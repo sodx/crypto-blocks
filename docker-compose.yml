@@ -2,24 +2,22 @@ version: '3.7'
 
 services:
   wordpress:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "8000:80"
+    volumes:
+      - ./:/var/www/html/wp-content/plugins/crypto-blocks
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
-    volumes:
-      - ./:/var/www/html/wp-content/plugins/crypto-blocks
 
   db:
     image: mariadb:10.5.8
     volumes:
       - db_data:/var/lib/mysql
-    restart: unless-stopped
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: exampledb
