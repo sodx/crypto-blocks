@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - name: Checkout
+        uses: actions/checkout@v3
+        
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -44,18 +44,5 @@ jobs:
       - name: Install Yarn dependencies
         run: yarn install
 
-      - name: Create release package
-        run: zip -r crypto-blocks.zip . -x ".git/*" ".github/*" "phpcs.xml" "composer.json" "composer.lock" ".gitignore"
-
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Automated release from GitHub Actions.
-          draft: false
-          prerelease: false
-          files: crypto-blocks.zip
+      - name: Generate zip
+        uses: 10up/action-wordpress-plugin-build-zip@stable
