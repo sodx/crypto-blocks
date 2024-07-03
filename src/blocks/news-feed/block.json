@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "crypto-blocks/news-feed",
+  "version": "0.0.1",
+  "title": "News Feed",
+  "category": "crypto-blocks",
+  "icon": "list-view",
+  "description": "Display a list of news articles from a cryptocurrency news source.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "numberOfPosts": {
+      "type": "number",
+      "default": 5
+    },
+    "sentimentScore": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css",
+  "textdomain": "crypto-blocks"
+}

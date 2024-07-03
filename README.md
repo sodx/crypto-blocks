@@ -8,9 +8,6 @@ Follow these steps to get your demo environment up and running.
 
 Ensure the following tools are installed on your system:
 
-- [Composer](https://getcomposer.org/)
-- [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
-- [Yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 - [Make]() (This is typically pre-installed on Unix-based systems, but you may need to install it manually on Windows or some Linux distributions)
 
@@ -30,12 +27,6 @@ Ensure the following tools are installed on your system:
     ```sh
     make start
     ```
-
-   The `make start` command will perform the following actions:
-
-    - Install PHP dependencies using Composer.
-    - Load NVM, install the required Node version, and install JavaScript dependencies using Yarn.
-    - Build and start the Docker container.
 
 3. **Access the site**:
 

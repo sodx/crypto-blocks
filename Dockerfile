@@ -1,13 +1,29 @@
 FROM wordpress:latest
 
-RUN apt-get update && \
-    apt-get install -y \
-    git \
-    unzip
+FROM wordpress:latest AS composer-deps-installer
 
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x wp-cli.phar && \
-    mv wp-cli.phar /usr/local/bin/wp
+WORKDIR /dist
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY . .
+
+RUN composer install --prefer-dist --no-scripts --no-progress --no-interaction --no-dev
+RUN composer dump-autoload --optimize --apcu --no-dev
+
+FROM node:18.20-alpine AS js-assets-builder
+
+WORKDIR /dist
+
+COPY --from=composer-deps-installer /dist /dist
+
+RUN npm install
+
+FROM wordpress:latest AS runner
+
+WORKDIR /var/www/html
+
+COPY --from=wordpress:cli /usr/local/bin/wp /usr/local/bin/wp
+COPY --from=js-assets-builder /dist /var/www/html/wp-content/plugins/crypto-blocks
 
 EXPOSE 80
 

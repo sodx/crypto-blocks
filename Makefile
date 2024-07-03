@@ -5,9 +5,6 @@ all:
 	@echo "make ssh - SSH into the docker container"
 
 start:
-	composer install
-	source ~/.nvm/nvm.sh && nvm install
-	yarn install
 	docker compose up --build -d
 
 upb:

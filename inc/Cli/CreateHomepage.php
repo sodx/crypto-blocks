@@ -28,6 +28,14 @@ class CreateHomepage
             <!-- wp:crypto-blocks/candlesticks {"source":"kraken","pair":"SOL/USDT"} -->
             <div class="wp-block-crypto-blocks-candlesticks"><div class="candlestick-chart" data-source="kraken" data-pair="SOL/USDT" data-interval="15m"></div></div>
             <!-- /wp:crypto-blocks/candlesticks -->
+            
+            <!-- wp:heading -->
+            <h2 class="wp-block-heading">Recent News</h2>
+            <!-- /wp:heading -->
+            
+            <!-- wp:crypto-blocks/news-feed {"numberOfPosts":3} -->
+            <div class="wp-block-crypto-blocks-news-feed" data-number-of-posts="3"></div>
+            <!-- /wp:crypto-blocks/news-feed -->
         ';
         $homepage = [
             'post_title' => 'Crypto Blocks Homepage',

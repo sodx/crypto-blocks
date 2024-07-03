@@ -4,8 +4,8 @@
   "name": "crypto-blocks/candlesticks",
   "version": "0.0.1",
   "title": "Candlestick Chart",
-  "category": "",
-  "icon": "graph",
+  "category": "crypto-blocks",
+  "icon": "chart-bar",
   "description": "Real time candlestick chart",
   "supports": {
     "html": false

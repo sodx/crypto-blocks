@@ -33,6 +33,9 @@ wp cb parse-news --allow-root --path=$WP_PATH
 echo "===== Creating Homepage. ====="
 wp cb create-homepage --allow-root --path=$WP_PATH
 
+echo "===== Flushing Permalinks ====="
+wp rewrite flush --allow-root --path=$WP_PATH
+
 echo "===== Starting Apache... ====="
 apache2-foreground
 

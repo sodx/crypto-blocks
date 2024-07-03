@@ -62,6 +62,7 @@ class CryptoNewsCPT {
              'show_ui'            => true,
              'show_in_menu'       => true,
              'query_var'          => true,
+             'show_in_rest'       => true,
              'rewrite'            => array( 'slug' => 'crypto-news' ),
              'capability_type'    => 'post',
              'has_archive'        => true,
@@ -82,11 +83,16 @@ class CryptoNewsCPT {
             ->where( 'post_type', '=', 'crypto_news' )
             ->add_fields(
                 array(
-                    Field::make( 'text', 'crypto_news_link', __( 'News Link', 'crypto-blocks' ) ),
-                    Field::make( 'text', 'crypto_news_source', __( 'News Source', 'crypto-blocks' ) ),
-                    Field::make( 'text', 'crypto_news_sentiment', __( 'Sentiment Score', 'crypto-blocks' ) ),
-                    Field::make( 'textarea', 'crypto_news_summary', __( 'Summary', 'crypto-blocks' ) ),
-                    Field::make( 'text', 'crypto_news_uuid', __( 'UUID', 'crypto-blocks' ) ),
+                    Field::make( 'text', 'crypto_news_link', __( 'News Link', 'crypto-blocks' ) )
+                        ->set_visible_in_rest_api(),
+                    Field::make( 'text', 'crypto_news_source', __( 'News Source', 'crypto-blocks' ) )
+                        ->set_visible_in_rest_api(),
+                    Field::make( 'text', 'crypto_news_sentiment', __( 'Sentiment Score', 'crypto-blocks' ) )
+                        ->set_visible_in_rest_api(),
+                    Field::make( 'textarea', 'crypto_news_summary', __( 'Summary', 'crypto-blocks' ) )
+                        ->set_visible_in_rest_api(),
+                    Field::make( 'text', 'crypto_news_uuid', __( 'UUID', 'crypto-blocks' ) )
+                        ->set_visible_in_rest_api(),
                 )
             );
     }

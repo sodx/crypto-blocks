@@ -24,9 +24,9 @@ class Setup {
         };
 
         self::initialize_post_types();
-
         add_action( 'after_setup_theme', $n( 'Setup::initialize_carbon_fields' ) );
         add_action( 'carbon_fields_register_fields', $n( 'Settings::register_plugin_options' ), 30 );
+        add_filter( 'block_categories_all', $n( 'Setup::add_cb_block_category') );
         add_action( 'init', $n( 'Setup::register_blocks' ) );
 
         $crypto_news_parser = new CryptoNewsParser();
@@ -49,6 +49,19 @@ class Setup {
      */
     public static function initialize_carbon_fields() {
         Carbon_Fields::boot();
+    }
+
+    public static function add_cb_block_category( $categories ) {
+        return array_merge(
+            $categories,
+            [
+                [
+                    'slug'  => 'crypto-blocks',
+                    'title' => __( 'Crypto Blocks', 'crypto-blocks' ),
+                    'icon'  => 'dashicons-admin-plugins',
+                ],
+            ]
+        );
     }
 
     /**

@@ -1,5 +1,5 @@
+import { render } from '@wordpress/element';
 import Candlestick from '../../components/candlestick';
-import ReactDOM from 'react-dom';
 
 document.addEventListener( 'DOMContentLoaded', function () {
     const charts = document.querySelectorAll( '.candlestick-chart' );
@@ -9,9 +9,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
         const pair = chart.getAttribute( 'data-pair' );
         const interval = chart.getAttribute( 'data-interval' );
 
-        ReactDOM.render(
-            <Candlestick params={ { source, pair, interval } } />,
-            chart
-        );
+        render( <Candlestick params={ { source, pair, interval } } />, chart );
     } );
 } );
