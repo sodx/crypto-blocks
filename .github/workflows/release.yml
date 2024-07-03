@@ -50,7 +50,7 @@ jobs:
       - name: Create artifact
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -X -r package_build/crypto-blocks.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md Makefile Dockerfile docker-compose.yml entrypoint.sh ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** src** node_modules** package_build**
+          args: zip -X -r package_build/crypto-blocks.zip . -x *.git* node_modules/\* .* "*/\.*" CODE_OF_CONDUCT.md CONTRIBUTING.md Makefile Dockerfile docker-compose.yml yarn.lock webpack.config.js prepare.js package.json api_helper.txt README.md entrypoint.sh ISSUE_TEMPLATE.md PULL_REQUEST_TEMPLATE.md *.dist composer.* dev-helpers** src** node_modules** package_build**
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
