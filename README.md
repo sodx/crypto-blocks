@@ -12,6 +12,7 @@ Ensure the following tools are installed on your system:
 - [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
 - [Yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
+- [Make]() (This is typically pre-installed on Unix-based systems, but you may need to install it manually on Windows or some Linux distributions)
 
 ### Quick Start
 
